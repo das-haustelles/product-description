@@ -1,6 +1,8 @@
 # Project Name
 
 > Project description
+- Property Description with "House Rules" link (side panel)
+- Reviews side panel with "Read All Reviews" link (side panel)
 
 ## Related Projects
 
