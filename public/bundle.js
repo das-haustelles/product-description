@@ -408,7 +408,9 @@ var Reviews = function (_React$Component) {
   _createClass(Reviews, [{
     key: 'render',
     value: function render() {
-      var satisfied = this.state.satisfied;
+      var _state = this.state,
+          satisfied = _state.satisfied,
+          unhappy = _state.unhappy;
 
       return _react2.default.createElement(
         'div',
@@ -430,8 +432,7 @@ var Reviews = function (_React$Component) {
               'JenSpring50214'
             ),
             ' ',
-            satisfied,
-            ' '
+            satisfied
           ),
           _react2.default.createElement(
             'p',
@@ -455,9 +456,8 @@ var Reviews = function (_React$Component) {
               null,
               'SpaceCadetHero421'
             ),
-            ' "',
-            this.state.unhappy,
-            '"'
+            ' ',
+            unhappy
           ),
           _react2.default.createElement(
             'p',

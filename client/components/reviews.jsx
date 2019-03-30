@@ -11,13 +11,13 @@ export default class Reviews extends React.Component {
   }
 
   render() {
-    const { satisfied } = this.state;
+    const { satisfied, unhappy } = this.state;
     return (
       <div>
         <div>
           <h1>Das Haustelles Reviews</h1>
           <h3>
-            <strong>JenSpring50214</strong> {satisfied}{' '}
+            <strong>JenSpring50214</strong> {satisfied}
           </h3>
           <p>
             My new camera is awesome! I just went on a trip to the Bahamas and I
@@ -29,7 +29,7 @@ export default class Reviews extends React.Component {
         </div>
         <div>
           <h3>
-            <strong>SpaceCadetHero421</strong> "{this.state.unhappy}"
+            <strong>SpaceCadetHero421</strong> {unhappy}
           </h3>
           <p>
             I bought this item from yourphotogrpahywarehouse hoping to replace
