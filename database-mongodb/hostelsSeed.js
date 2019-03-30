@@ -28,7 +28,8 @@ function createHostel() {
       },
       thingsToNote: ["All guests must provide a passport or current Australian driver’s license on arrival with a valid credit card to check in.",
         "Proof of age cards are not accepted.",
-        "Check in time is 2pm"
+        "Check in time is 2pm",
+        "Check out time is 11am"
       ]
     }
   };
