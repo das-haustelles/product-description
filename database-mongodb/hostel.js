@@ -24,11 +24,12 @@ const hostelSchema = new mongoose.Schema({
 });
 
 const Hostel = mongoose.model('Hostel', hostelSchema);
-Hostel.find({}, (err, docs) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log(docs);
-  }
-});
+
+// Hostel.find({}, (err, docs) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log(docs);
+//   }
+// });
 module.exports = Hostel;

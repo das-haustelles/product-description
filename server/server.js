@@ -14,12 +14,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: true
-  })
+    extended: true,
+  }),
 );
 
 // eslint-disable-next-line func-names
-app.get('/hostels/:hostelId', function (req, res) {
+app.get('/hostels/:hostelId', (req, res) => {
   const {
     hostelId
   } = req.params;
