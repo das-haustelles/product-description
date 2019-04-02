@@ -7,12 +7,24 @@ const User = require('./user.js');
 
 const sampleUsers = [];
 
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
+const travelExperience = {
+  0: 'Novice Nomad',
+  1: 'Avid Traveller',
+  2: 'Globetrotter',
+};
+
+function randomNumber(minimum, maximum, precision) {
+  const min = minimum || 0;
+  const max = maximum || 9007199254740992;
+  const precision1 = precision || 0;
+
+  const random = Math.random() * (max - min) + min;
+
+  return random.toFixed(precision1);
 }
 
 function getRandomGender() {
-  const zeroOrOne = Math.floor(getRandomArbitrary(0, 2));
+  const zeroOrOne = randomNumber(0, 1);
   if (zeroOrOne === 0) {
     return 'Male';
   }
@@ -20,28 +32,16 @@ function getRandomGender() {
 }
 
 function getRandomAge18To45() {
-  return Math.floor(getRandomArbitrary(18, 45));
+  return randomNumber(18, 45);
 }
 
-const travelExperience = {
-  0: 'Novice Nomad',
-  1: 'Avid Traveller',
-  2: 'Globetrotter',
-};
-
 function getRandomTravelerExperience() {
-  const travelerNum = Math.floor(getRandomArbitrary(0, 3));
+  const travelerNum = randomNumber(0, 2);
   return travelExperience[travelerNum];
 }
 
-function randomNumber(minimum, maximum, precision) {
-  const min = minimum === undefined ? 0 : minimum;
-  const max = maximum === undefined ? 9007199254740992 : maximum;
-  const precision1 = precision === undefined ? 0 : precision;
-
-  const random = Math.random() * (max - min) + min;
-
-  return random.toFixed(precision1);
+function getRandomUserReviewCount() {
+  return randomNumber(1, 3);
 }
 
 function createReview(username) {
@@ -79,7 +79,7 @@ function createUser() {
   const maleOrFemale = getRandomGender();
   const randomAge = getRandomAge18To45();
   const randomTravelExperience = getRandomTravelerExperience();
-  const randomReviewNumber = Math.floor(getRandomArbitrary(1, 3));
+  const randomReviewNumber = getRandomUserReviewCount();
   const userReviews = [];
 
   for (let i = 0; i < randomReviewNumber; i += 1) {
@@ -88,7 +88,7 @@ function createUser() {
   }
 
   const oneUser = {
-    usename: username,
+    username,
     country: faker.address.country(),
     gender: maleOrFemale,
     age: randomAge,
