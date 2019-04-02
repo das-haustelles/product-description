@@ -10,17 +10,17 @@ const hostelSchema = new mongoose.Schema({
   houseRules: {
     checkInCheckOut: {
       checkIn: String,
-      checkOut: String
+      checkOut: String,
     },
     policies: [],
     cancellation_policy: {
       depositOnlyRates: String,
-      nonRefundableRates: String
+      nonRefundableRates: String,
     },
-    thingsToNote: []
-  }
+    thingsToNote: [],
+  },
 }, {
-  timestamps: true
+  timestamps: true,
 });
 
 const Hostel = mongoose.model('Hostel', hostelSchema);
