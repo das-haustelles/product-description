@@ -1,12 +1,12 @@
 import React from 'react';
 
-export default class Reviews extends React.Component {
+class Reviews extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       satisfied: 'I love this product!!',
-      unhappy: 'Arrived late and damaged :('
+      unhappy: 'Arrived late and damaged :(',
     };
   }
 
@@ -15,9 +15,11 @@ export default class Reviews extends React.Component {
     return (
       <div>
         <div>
-          <h1>Das Haustelles Reviews</h1>
+          <h1 className="page-title">Das Haustelles</h1>
           <h3>
-            <strong>JenSpring50214</strong> {satisfied}
+            <strong>Jen</strong>
+            {' '}
+            {satisfied}
           </h3>
           <p>
             My new camera is awesome! I just went on a trip to the Bahamas and I
@@ -29,7 +31,9 @@ export default class Reviews extends React.Component {
         </div>
         <div>
           <h3>
-            <strong>SpaceCadetHero421</strong> {unhappy}
+            <strong>SpaceCadetHero421</strong>
+            {' '}
+            {unhappy}
           </h3>
           <p>
             I bought this item from yourphotogrpahywarehouse hoping to replace
@@ -43,3 +47,6 @@ export default class Reviews extends React.Component {
     );
   }
 }
+
+// ReactDOM.render(<Reviews />, document.getElementById('reviews'));
+export default Reviews;
