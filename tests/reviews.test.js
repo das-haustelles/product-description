@@ -4,10 +4,10 @@ import {
 } from 'enzyme';
 
 // Components
-import Reviews from '../client/components/reviews';
+import Reviews from '../client/components/Reviews';
 
-describe('Renders Das Haustelles', () => {
-  test('Title of page is Das Haustelles Reviews', () => {
+describe('Test functionality of this sample component', () => {
+  it('The MiniSummaryRating Component exists', () => {
     const wrapper = shallow(<Reviews />);
     expect(wrapper.exists()).toBe(true);
   });
