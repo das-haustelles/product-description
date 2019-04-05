@@ -5,7 +5,6 @@ import { Comment } from 'styled-icons/fa-regular';
 
 const EntireSection = styled.section`
   width: 50%;
-  position: fixed;
   background-color: #fff;
 `;
 
@@ -109,6 +108,22 @@ const RatingBreakdown = styled.ul`
 const RatingBar = styled.li`
 `;
 
+const ProgressBar = styled.div`
+  position: relative;
+  height: 0.375rem;
+  width: 350px;
+  border-radius: 50px;
+  border: 1px solid #333;
+  background: black;
+`;
+
+const Filler = styled.div`
+  background: #ff7547;
+  height: 100%;
+  width: ${props => props.percentage || 0}%;
+  border-radius: inherit;
+  transition: width .2s ease-in;
+`;
 
 function ReviewsPanel() {
   return (
@@ -152,42 +167,63 @@ function ReviewsPanel() {
                         Value For Money
                         <strong className="pull-right">     8.4</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={84} />
+                      </ProgressBar>
                     </RatingBar>
                     <RatingBar>
                       <p>
                         Security
                         <strong className="pull-right">     9.1</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={91} />
+                      </ProgressBar>
                     </RatingBar>
                     <RatingBar>
                       <p>
                         Location
                         <strong className="pull-right">     9.8</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={98} />
+                      </ProgressBar>
                     </RatingBar>
                     <RatingBar>
                       <p>
                         Staff
                         <strong className="pull-right">     8.9</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={89} />
+                      </ProgressBar>
                     </RatingBar>
                     <RatingBar>
                       <p>
                         Atmosphere
                         <strong className="pull-right">     8.4</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={84} />
+                      </ProgressBar>
                     </RatingBar>
                     <RatingBar>
                       <p>
                         Cleanliness
                         <strong className="pull-right">     8.3</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={83} />
+                      </ProgressBar>
                     </RatingBar>
                     <RatingBar>
                       <p>
                         Facilities
                         <strong className="pull-right">     8.4</strong>
                       </p>
+                      <ProgressBar>
+                        <Filler percentage={84} />
+                      </ProgressBar>
                     </RatingBar>
                   </RatingBreakdown>
                 </div>
@@ -225,8 +261,6 @@ function ReviewsPanel() {
         </SidePanelContentSection>
 
       </div>
-
-
     </EntireSection>
 
   );
