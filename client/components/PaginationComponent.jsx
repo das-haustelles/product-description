@@ -85,6 +85,7 @@ const NextArrow = styled(KeyboardArrowRight)`
 `;
 
 const PaginationItem = styled.div`
+  font-size: 1rem;
   margin-left: .25rem;
   border-radius: .188rem;
   transition: all .2s ease-in-out;
@@ -98,7 +99,7 @@ const PaginationItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Noto",Helvetica,Arial,sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: 400;
   font-style: normal;
   &:hover {
@@ -129,62 +130,82 @@ const PaginationCurrent = styled.div`
 
 `;
 
-function PaginationComponent(props) {
-  const { currentPage } = props;
-  let pagesArray;
-  if (currentPage <= 3) {
-    pagesArray = [1, 2, 3, 4, 5];
-  } else {
-    pagesArray = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+class PaginationComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1,
+      // pagesArray: currentPage <= 3 ? [1, 2, 3, 4, 5] : [e.currentTarget.textContent - 2, this.currentPage - 1, this.currentPage, this.currentPage + 1, this.currentPage + 2],
+      pagesArray: [1, 2, 3, 4, 5],
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
-  return (
-    <div className="row-container">
-      <div className="small-12 columns">
-        <div className="intro">
-          <p>
-            current page is
-            {currentPage}
-            !!!
-          </p>
-          <PaginationCenter>
-            <PaginationFirst>First</PaginationFirst>
 
-            <PaginationPrevious>
-              <PreviousArrow />
-            </PaginationPrevious>
-            {/* [1, 2, 3, 4, 5] */}
-            {
-              pagesArray.map((pageNumber, idx) => {
-                if (currentPage === idx + 1) {
+  handleClick(e) {
+    const pageClicked = parseInt(e.currentTarget.textContent, 10);
+    console.log('page clicked:', pageClicked);
+    console.log('state is:', this.state);
+    this.setState({
+      currentPage: pageClicked,
+      pagesArray: pageClicked <= 3 ? [1, 2, 3, 4, 5] : [pageClicked - 2, pageClicked - 1, pageClicked, pageClicked + 1, pageClicked + 2],
+    });
+  }
+
+  render() {
+    const { handleClickReviewsPanel } = this.props;
+    const { pagesArray, currentPage } = this.state;
+    return (
+      <div className="row-container">
+        <div className="small-12 columns">
+          <div className="intro">
+            <p>
+              current page is
+              {currentPage}
+            </p>
+            <PaginationCenter>
+              <PaginationFirst>First</PaginationFirst>
+
+              <PaginationPrevious>
+                <PreviousArrow />
+              </PaginationPrevious>
+              {
+                pagesArray.map((pageNumber) => {
+                  if (currentPage === pageNumber) {
+                    return (
+                      <PaginationCurrent
+                        key={`page-num-${pageNumber}`}
+                        id={`page-num-${pageNumber}`}
+                      >
+                        {pageNumber}
+                      </PaginationCurrent>
+                    );
+                  }
                   return (
-                    <PaginationCurrent key={`page-num-${pageNumber}`} id={`page-num-${pageNumber}`}>
+                    <PaginationItem
+                      key={`page-num-${pageNumber}`}
+                      id={`page-num-${pageNumber}`}
+                      onClick={(e) => {
+                        handleClickReviewsPanel(e);
+                        this.handleClick(e);
+                      }}
+                    >
                       {pageNumber}
-                    </PaginationCurrent>
+                    </PaginationItem>
                   );
-                }
-                return (
-                  <PaginationItem key={`page-num-${pageNumber}`} id={`page-num-${pageNumber}`}>
-                    {pageNumber}
-                  </PaginationItem>
-                );
-              })
-            }
-            {/* <PaginationItem id="some-id">1</PaginationItem>
-            <PaginationItem>2</PaginationItem>
-            <PaginationItem>3</PaginationItem>
-            <PaginationItem>4</PaginationItem>
-            <PaginationItem>5</PaginationItem> */}
+                })
+              }
 
-            <PaginationNext>
-              <NextArrow />
-            </PaginationNext>
+              <PaginationNext>
+                <NextArrow />
+              </PaginationNext>
 
-            <PaginationLast>Last</PaginationLast>
-          </PaginationCenter>
+              <PaginationLast>Last</PaginationLast>
+            </PaginationCenter>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default PaginationComponent;

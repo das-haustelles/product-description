@@ -56,8 +56,17 @@ class ReviewsPanel extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 3,
+      currentPage: 1,
     };
+    this.handleCurrentPageChange = this.handleCurrentPageChange.bind(this);
+  }
+
+  handleCurrentPageChange(e) {
+    e.preventDefault();
+    console.log('page change clicked:', e.currentTarget.textContent);
+    this.setState({
+      currentPage: e.currentTarget.textContent,
+    });
   }
 
   render() {
@@ -83,7 +92,7 @@ class ReviewsPanel extends React.Component {
               <br />
               <br />
               <UserReviewsComponent />
-              <PaginationComponent currentPage={currentPage} />
+              <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} />
 
             </div>
           </SidePanelContentSection>
