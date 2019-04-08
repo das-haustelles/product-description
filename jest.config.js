@@ -3,7 +3,7 @@ module.exports = {
   clearMocks: true,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  collectCoverageFrom: ['src/**/*.{js,jsx,mjs}'],
+  collectCoverageFrom: ['client/**/*.{js,jsx,mjs}', '!client/index.js'],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: 'coverage',
@@ -15,7 +15,8 @@ module.exports = {
   setupFiles: ['<rootDir>/enzyme.config.js'],
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom',
+  // replaced 'jsdom' with 'node' to fix error message
+  testEnvironment: 'node',
 
   // The glob patterns Jest uses to detect test files
   testMatch: ['**/__tests__/**/*.js?(x)', '**/?(*.)+(spec|test).js?(x)'],
