@@ -20,6 +20,8 @@
 ## Usage
 
 > Some usage instructions
+-  run "build" for "webpack -d --watch",
+-  run "start" for "nodemon ./server/server.js"
 
 ## Requirements
 

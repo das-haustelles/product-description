@@ -21,18 +21,18 @@ app.use(
 // eslint-disable-next-line func-names
 app.get('/hostels/:hostelId', (req, res) => {
   const {
-    hostelId
+    hostelId,
   } = req.params;
   // res.send(`got a request!!! hostelId is: ${hostelId}`)
   console.log('got a request!!! hostelId is:', hostelId);
 
 
   Hostel.find({
-    _id: hostelId
+    _id: hostelId,
   }, (err, hostel) => {
-    console.log('in the find')
+    console.log('in the find');
     if (err) {
-      console.log('inside ERROR')
+      console.log('inside ERROR');
     } else {
       console.log('inside ELSE');
       res.send(hostel);
