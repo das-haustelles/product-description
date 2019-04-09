@@ -20,6 +20,8 @@
 ## Usage
 
 > Some usage instructions
+-  run "react-dev" for "webpack -d --watch",
+-  run "start" for "nodemon ./server/server.js"
 
 ## Requirements
 
