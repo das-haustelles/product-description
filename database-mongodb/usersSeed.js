@@ -1,5 +1,7 @@
 // SEEDING SCRIPT
 // "db:usersSeed": "node database-mongodb/usersSeed.js"
+import hostelList from './hostelsSeed';
+// use hostelList array to seed our data
 
 const faker = require('faker');
 const db = require('./index.js');

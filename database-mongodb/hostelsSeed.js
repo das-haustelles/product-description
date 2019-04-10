@@ -49,3 +49,4 @@ function insertSampleHostels() {
 }
 
 insertSampleHostels();
+export default sampleHostels;

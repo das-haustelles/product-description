@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const Hostel = require('../database-mongodb/hostel');
+const User = require('../database-mongodb/user');
 
 const app = express();
 const port = process.env.PORT || 3004;
@@ -40,4 +41,8 @@ app.get('/hostels/:hostelId', (req, res) => {
   });
 });
 
-app.listen(port, () => {});
+app.get('/')
+
+app.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});
