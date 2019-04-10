@@ -172,8 +172,7 @@ class UserReviewsComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hostelName: 
-      allReviews: [],
+      hostelName: 'night owl',
     };
   }
 
