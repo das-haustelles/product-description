@@ -41,7 +41,7 @@ app.get('/hostels/:hostelId', (req, res) => {
   });
 });
 
-app.get('/')
+app.get('/hostels/:hostel');
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

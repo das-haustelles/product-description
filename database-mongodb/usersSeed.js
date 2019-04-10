@@ -1,8 +1,5 @@
 // SEEDING SCRIPT
 // "db:usersSeed": "node database-mongodb/usersSeed.js"
-import hostelList from './hostelsSeed';
-// use hostelList array to seed our data
-
 const faker = require('faker');
 const db = require('./index.js');
 const User = require('./user.js');
@@ -43,12 +40,11 @@ function getRandomTravelerExperience() {
 }
 
 function getRandomUserReviewCount() {
-  return randomNumber(1, 3);
+  return randomNumber(1, 5);
 }
 
 function createReview(username) {
   const randomNumBetween4and10 = randomNumber(4, 10, 1);
-  const randomHostelName = faker.company.companyName();
   const ratingWord = {
     4: 'Rating',
     5: 'Rating',
@@ -58,8 +54,8 @@ function createReview(username) {
     9: 'Superb',
     10: 'Superb',
   };
-
   const avgRatingWord = ratingWord[Math.floor(randomNumBetween4and10)];
+  const hostelId = randomNumber(1, 10);
 
   const oneReview = {
     username,
@@ -68,7 +64,7 @@ function createReview(username) {
     reviewText: faker.lorem.text(),
     reviewDate: faker.date.recent(),
     propertyReply: faker.lorem.text(),
-    hostelName: randomHostelName,
+    hostelId,
   };
 
   return oneReview;
@@ -102,7 +98,7 @@ function createUser() {
   sampleUsers.push(oneUser);
 }
 
-for (let i = 0; i < 3; i += 1) {
+for (let i = 0; i < 25; i += 1) {
   createUser();
 }
 

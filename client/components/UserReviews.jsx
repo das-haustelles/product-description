@@ -177,7 +177,8 @@ class UserReviewsComponent extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/hostels/:hostelId/reviews')
+    const hostelId = window.location.pathname.split('/')[1];
+    axios.get(`/hostels/${hostelId}/reviews`)
       .then((response) => {
         console.log(response);
       })
