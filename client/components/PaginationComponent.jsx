@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { KeyboardArrowLeft, KeyboardArrowRight } from 'styled-icons/material';
 
 const PaginationCenter = styled.div`

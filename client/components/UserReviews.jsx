@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import { User, Comments } from 'styled-icons/fa-solid';
 import { Calendar } from 'styled-icons/boxicons-regular';

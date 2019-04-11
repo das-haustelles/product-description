@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import ReviewGuidelines from './ReviewGuidelines';
 import RatingSummaryBreakdown from './RatingSummaryBreakdown';
