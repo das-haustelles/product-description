@@ -1,11 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 
 import ReviewGuidelines from './ReviewGuidelines';
 import RatingSummaryBreakdown from './RatingSummaryBreakdown';
 import DropdownFilters from './DropdownFilters';
-import UserReviewsComponent from './UserReviews';
+import UserReview from './UserReviews';
 import PaginationComponent from './PaginationComponent';
-
 
 const EntireSection = styled.section`
   width: 50%;
@@ -64,8 +64,20 @@ class ReviewsPanel extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
+      pageReviews: [],
     };
     this.handleCurrentPageChange = this.handleCurrentPageChange.bind(this);
+  }
+
+  componentDidMount() {
+    const hostelId = window.location.pathname.split('/')[1];
+    axios.get(`/hostels/${hostelId}/reviews`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   handleCurrentPageChange(e) {
@@ -77,33 +89,31 @@ class ReviewsPanel extends React.Component {
   }
 
   render() {
-    const { currentPage } = this.state;
+    const { currentPage, pageReviews } = this.state;
     return (
       <EntireSection>
         <SidePanelHeader>
-          <Header2>Reviews & Ratings SIRRRR</Header2>
+          <Header2>Reviews & Ratings</Header2>
           <XDiv>x</XDiv>
         </SidePanelHeader>
-
 
         <div className="slide-panel-content">
           <div className="slide-panel-content-wrapper" />
           <SidePanelContentSection>
             <div className="reviews-overlay-content">
-
               <ReviewGuidelines />
               <RatingSummaryBreakdown />
+              <br />
+              <br />
               <DropdownFilters />
               <br />
               <br />
               <br />
               <br />
-              <UserReviewsComponent />
+              {pageReviews.map(review => <UserReview key={review.id} />)}
               <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} />
-
             </div>
           </SidePanelContentSection>
-
         </div>
       </EntireSection>
 

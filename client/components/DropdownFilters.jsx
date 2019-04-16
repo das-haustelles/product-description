@@ -8,6 +8,17 @@ const DropdownFilter = styled.div`
   width: 50%;
   padding-left: .9375rem;
   padding-right: .9375rem;
+  margin-top: auto;
+`;
+
+const ShowFilter = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SortByFilter = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const FormLabel = styled.label`
@@ -43,19 +54,23 @@ function DropdownFilters() {
       <div className="small-12 columns">
         <div className="intro">
           <DropdownFilter>
-            <FormLabel>SHOW:</FormLabel>
-            <DropdownSelect>
-              <option defaultValue="selected"> English Reviews</option>
-              <option> All Reviews</option>
-            </DropdownSelect>
-            <FormLabel>SORT BY:</FormLabel>
-            <DropdownSelect>
-              <option> Top Rated</option>
-              <option> Lowest Rated</option>
-              <option defaultValue="selected"> Newest</option>
-              <option> Oldest</option>
-              <option> Age Group</option>
-            </DropdownSelect>
+            <ShowFilter>
+              <FormLabel>SHOW:</FormLabel>
+              <DropdownSelect>
+                <option defaultValue="selected"> English Reviews</option>
+                <option> All Reviews</option>
+              </DropdownSelect>
+            </ShowFilter>
+            <SortByFilter>
+              <FormLabel>SORT BY:</FormLabel>
+              <DropdownSelect>
+                <option> Top Rated</option>
+                <option> Lowest Rated</option>
+                <option defaultValue="selected"> Newest</option>
+                <option> Oldest</option>
+                <option> Age Group</option>
+              </DropdownSelect>
+            </SortByFilter>
           </DropdownFilter>
         </div>
       </div>

@@ -78,7 +78,6 @@ const ReadAllReviewsLink = styled.a`
   font-family: "Noto",Helvetica,Arial,sans-serif;
 `;
 
-
 function MiniSummaryRating() {
   return (
     <MSRating>

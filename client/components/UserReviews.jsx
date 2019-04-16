@@ -1,10 +1,11 @@
 import React from 'react';
-import axios from 'axios';
 import { User, Comments } from 'styled-icons/fa-solid';
 import { Calendar } from 'styled-icons/boxicons-regular';
 
-const UserReviews = styled.div`
+const UserReviewsContainer = styled.div`
   display: flex;
+  float: left;
+  justify-content: flex-start;
 `;
 
 const UserProfileSummary = styled.ul`
@@ -61,7 +62,8 @@ const IndividualUserReviewsLink = styled.a`
   font-size: .7rem;
 `;
 
-const UserReviewInfo = styled.div`
+const ReviewInfo = styled.div`
+  margin-left: 40px;
 `;
 
 const UserReviewInfoHeader = styled.div`
@@ -106,7 +108,7 @@ const UserReviewInfoHeaderNotes = styled.div`
   padding-top: 1rem;
   margin: 0;
   padding: 0;
-  font-size: .8rem;
+  font-size: 1.1rem;
   color: #333;
   font-family: "Noto",Helvetica,Arial,sans-serif;
 `;
@@ -118,7 +120,7 @@ const CalendarIcon = styled(Calendar)`
 
 const UserReviewHeaderDate = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   color: #888;
   text-align: right;
   font-size: .8rem;
@@ -175,23 +177,12 @@ class UserReviewsComponent extends React.Component {
     };
   }
 
-  componentDidMount() {
-    const hostelId = window.location.pathname.split('/')[1];
-    axios.get(`/hostels/${hostelId}/reviews`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   render() {
     return (
       <div className="row-container">
         <div className="small-12 columns">
           <div className="intro">
-            <UserReviews>
+            <UserReviewsContainer>
               <UserProfileSummary>
                 <BackgroundCircleUserLogo>
                   <StyledUserLogo />
@@ -204,7 +195,8 @@ class UserReviewsComponent extends React.Component {
                   <IndividualUserReviewsLink href="wwww.hostelworld.com" target="_blank">4 reviews</IndividualUserReviewsLink>
                 </IndividualUserReviews>
               </UserProfileSummary>
-              <UserReviewInfo>
+
+              <ReviewInfo>
                 <UserReviewInfoHeader>
                   <UserReviewInfoHeaderRating>
                     <UserReviewInfoHeaderRatingScore>
@@ -237,8 +229,9 @@ class UserReviewsComponent extends React.Component {
                     </UserReviewReplySignatureSpan>
                   </UserReviewSignature>
                 </UserReviewReply>
-              </UserReviewInfo>
-            </UserReviews>
+              </ReviewInfo>
+
+            </UserReviewsContainer>
           </div>
         </div>
       </div>
