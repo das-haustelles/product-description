@@ -1,35 +1,43 @@
 import React from 'react';
 import { Comment } from 'styled-icons/fa-regular';
 
-
 const RatingSummary = styled.div`
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const Score = styled.div`
-  display: flex;
   justify-content: center;
   background-color: #ff7547;
+  color: #fff;
   padding: .5rem;
   font-size: 1.4rem;
   text-align: center;
   font-weight: 700;
   border-radius: .188rem;
-  color: #fff;
-  float: left;
   line-height: 1;
-  min-width: 3.4rem;
-  display: flex;
+  min-width: 3.2rem;
   box-sizing: border-box;
-  font-family: Helvetica,Arial,sans-serif;
-  padding: .5rem;
+  font-family: Helvetica, Arial, sans-serif;
   margin-top: 25px;
 `;
 
+const WordReviewCountContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+`;
 
-const Paragraph = styled.p`
+const TotalReviewsContainer = styled.div`
+  display: flex;
+`;
+
+const SummaryWordParagraph = styled.text`
   color: #ff7547;
   font-size: 1rem;
   font-weight: 700;
+  margin-top: auto;
 `;
 
 const ReviewLink = styled.span`
@@ -44,19 +52,29 @@ const ReviewLink = styled.span`
 
 const RatingBreakdown = styled.ul`
   list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 2em;
+  grid-gap: .5em;
+  padding-left: 0;
 `;
 
 const RatingBar = styled.li`
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 `;
 
 const RatingCategory = styled.p`
   font-size: .8rem;
   line-height: 1.2rem;
+  width: 350px;
 `;
 
 const RatingNumber = styled.strong`
   font-weight: 700;
-  font-size: .8rem;
+  font-size: .85rem;
   float: right;
 `;
 
@@ -66,6 +84,7 @@ const ProgressBar = styled.div`
   width: 350px;
   border-radius: 50px;
   background: #eee;
+  margin-top: auto;
 `;
 
 const Filler = styled.div`
@@ -82,21 +101,21 @@ function RatingSummaryBreakdown() {
       <div className="small-12 columns">
         <div className="intro">
           <RatingSummary>
-            <Score> 8.8 </Score>
-            <div>
-              <Paragraph id="summary-keyword">Fabulous</Paragraph>
-              <div>
+            <Score>8.7</Score>
+            <WordReviewCountContainer>
+              <SummaryWordParagraph id="summary-keyword">Fabulous</SummaryWordParagraph>
+              <TotalReviewsContainer>
                 <Comment size="10" />
                 <ReviewLink>2870 Total Reviews</ReviewLink>
-              </div>
-            </div>
+              </TotalReviewsContainer>
+            </WordReviewCountContainer>
           </RatingSummary>
 
           <RatingBreakdown>
             <RatingBar>
               <RatingCategory>
                 Value For Money
-                <RatingNumber className="pull-right">     8.4</RatingNumber>
+                <RatingNumber className="pull-right">8.4</RatingNumber>
               </RatingCategory>
               <ProgressBar>
                 <Filler percentage={84} />
@@ -105,7 +124,7 @@ function RatingSummaryBreakdown() {
             <RatingBar>
               <RatingCategory>
                 Security
-                <RatingNumber className="pull-right">     9.1</RatingNumber>
+                <RatingNumber className="pull-right">9.1</RatingNumber>
               </RatingCategory>
               <ProgressBar>
                 <Filler percentage={91} />
@@ -114,7 +133,7 @@ function RatingSummaryBreakdown() {
             <RatingBar>
               <RatingCategory>
                 Location
-                <RatingNumber className="pull-right">     9.8</RatingNumber>
+                <RatingNumber className="pull-right">9.8</RatingNumber>
               </RatingCategory>
               <ProgressBar>
                 <Filler percentage={98} />
@@ -123,7 +142,7 @@ function RatingSummaryBreakdown() {
             <RatingBar>
               <RatingCategory>
                 Staff
-                <RatingNumber className="pull-right">     8.9</RatingNumber>
+                <RatingNumber className="pull-right">8.9</RatingNumber>
               </RatingCategory>
               <ProgressBar>
                 <Filler percentage={89} />
@@ -132,7 +151,7 @@ function RatingSummaryBreakdown() {
             <RatingBar>
               <RatingCategory>
                 Atmosphere
-                <RatingNumber className="pull-right">     8.4</RatingNumber>
+                <RatingNumber className="pull-right">8.4</RatingNumber>
               </RatingCategory>
               <ProgressBar>
                 <Filler percentage={84} />

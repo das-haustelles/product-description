@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const mongoUri = 'mongodb://localhost/dashaustelles';
 
 mongoose.connect(mongoUri, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
 });
 
 const db = mongoose.connection;
