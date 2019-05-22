@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3004;
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/hostels/:hostelId/reviews', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
 app.use(
@@ -24,11 +24,8 @@ app.get('/hostels/:hostelId', (req, res) => {
   const {
     hostelId,
   } = req.params;
-  // res.send(`got a request!!! hostelId is: ${hostelId}`)
-  console.log('got a request!!! hostelId is:', hostelId);
 
-
-  Hostel.find({
+  User.find({
     _id: hostelId,
   }, (err, hostel) => {
     console.log('in the find');
@@ -41,7 +38,22 @@ app.get('/hostels/:hostelId', (req, res) => {
   });
 });
 
-app.get('/hostels/:hostel');
+app.get('/api/hostels/:hostelId/reviews', (req, res) => {
+  console.log('inside GET users');
+  // const {
+  //   hostelId,
+  // } = req.params;
+  // const hostelReviews = [];
+
+  User.find({}, (err, users) => {
+    if (err) {
+      console.log('inside ERROR');
+    } else {
+      console.log('USERS:', users[0]);
+      res.send(users);
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`listening on port ${port}, PRODUCT DESCRIPTION`);

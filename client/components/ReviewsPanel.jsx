@@ -64,16 +64,18 @@ class ReviewsPanel extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      pageReviews: [],
+      userReviews: [],
     };
     this.handleCurrentPageChange = this.handleCurrentPageChange.bind(this);
   }
 
   componentDidMount() {
     const hostelId = window.location.pathname.split('/')[1];
-    axios.get(`/hostels/${hostelId}/reviews`)
+    axios.get(`/api/hostels/${hostelId}/reviews`)
       .then((response) => {
-        console.log(response);
+        this.setState({
+          userReviews: response.data,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -82,14 +84,13 @@ class ReviewsPanel extends React.Component {
 
   handleCurrentPageChange(e) {
     e.preventDefault();
-    console.log('page change clicked:', e.currentTarget.textContent);
     this.setState({
       currentPage: e.currentTarget.textContent,
     });
   }
 
   render() {
-    const { currentPage, pageReviews } = this.state;
+    const { currentPage, userReviews } = this.state;
     return (
       <EntireSection>
         <SidePanelHeader>
@@ -110,7 +111,7 @@ class ReviewsPanel extends React.Component {
               <br />
               <br />
               <br />
-              {pageReviews.map(review => <UserReview key={review.id} />)}
+              {userReviews.map((review, idx) => <UserReview key={idx} review={review} />)}
               <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} />
             </div>
           </SidePanelContentSection>

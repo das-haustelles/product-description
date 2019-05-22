@@ -178,6 +178,13 @@ class UserReviewsComponent extends React.Component {
   }
 
   render() {
+    const { review } = this.props;
+    const {
+      username, age, gender, country, travelExperience,
+    } = review;
+    const {
+ avgRating, avgRatingWord, reviewDate, reviewText, propertyReply 
+} = review.reviews[0];
     return (
       <div className="row-container">
         <div className="small-12 columns">
@@ -188,9 +195,19 @@ class UserReviewsComponent extends React.Component {
                   <StyledUserLogo />
                 </BackgroundCircleUserLogo>
 
-                <Username> yeah0904 </Username>
-                <UserDetails> South Korea, Female, 18-24 </UserDetails>
-                <UserRank> Novice Nomad </UserRank>
+                <Username>
+                  {username}
+                </Username>
+                <UserDetails>
+                  {country}
+                  ,
+                  {gender}
+                  ,
+                  {age}
+                </UserDetails>
+                <UserRank>
+                  {travelExperience}
+                </UserRank>
                 <IndividualUserReviews>
                   <IndividualUserReviewsLink href="wwww.hostelworld.com" target="_blank">4 reviews</IndividualUserReviewsLink>
                 </IndividualUserReviews>
@@ -200,27 +217,29 @@ class UserReviewsComponent extends React.Component {
                 <UserReviewInfoHeader>
                   <UserReviewInfoHeaderRating>
                     <UserReviewInfoHeaderRatingScore>
-                      8.8
+                      {avgRating}
                     </UserReviewInfoHeaderRatingScore>
                     <UserReviewInfoHeaderRatingScoreInfo>
                       <UserReviewInfoHeaderRatingScoreInfoKeyword>
-                        Fabulous
+                        {avgRatingWord}
                       </UserReviewInfoHeaderRatingScoreInfoKeyword>
                     </UserReviewInfoHeaderRatingScoreInfo>
                   </UserReviewInfoHeaderRating>
 
                   <UserReviewHeaderDate>
                     <CalendarIcon />
-                    <span> 6 Apr 2019 </span>
+                    <span>
+                      {reviewDate}
+                    </span>
                   </UserReviewHeaderDate>
                 </UserReviewInfoHeader>
 
                 <UserReviewInfoHeaderNotes>
-                  Perfect, just dont doubt it
+                  {reviewText}
                 </UserReviewInfoHeaderNotes>
                 <UserReviewReply>
                   <UserReviewReplyParagraph>
-                    Thanks so much for leaving us an awesome review, we think youre perfect too ;)
+                    {propertyReply}
                   </UserReviewReplyParagraph>
                   <UserReviewSignature>
                     <UserReviewReplySignatureCommentLogo />

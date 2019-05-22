@@ -41,8 +41,6 @@ for (let i = 1; i < 11; i += 1) {
   createHostel(i);
 }
 
-// console.log(sampleHostels);
-
 function insertSampleHostels() {
   Hostel.create(sampleHostels)
     .then(() => db.close())
