@@ -10,6 +10,12 @@ const app = express();
 const port = process.env.PORT || 3004;
 
 app.use(morgan('dev'));
+
+app.get('*.js', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 app.use('/hostels/:hostelId/reviews', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
@@ -40,16 +46,13 @@ app.get('/hostels/:hostelId', (req, res) => {
 
 app.get('/api/hostels/:hostelId/reviews', (req, res) => {
   console.log('inside GET users');
-  // const {
-  //   hostelId,
-  // } = req.params;
-  // const hostelReviews = [];
 
   User.find({}, (err, users) => {
     if (err) {
       console.log('inside ERROR');
+      throw err;
     } else {
-      console.log('USERS:', users[0]);
+      console.log('SEEING CHANGES??? USERS:', users);
       res.send(users);
     }
   });
