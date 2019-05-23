@@ -11,11 +11,12 @@ const port = process.env.PORT || 3004;
 
 app.use(morgan('dev'));
 
-app.get('*.js', (req, res, next) => {
-  req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  next();
-});
+// tell server to use bundle.js.gz file instead of bundle.js file
+// app.get('*.js', (req, res, next) => {
+//   req.url += '.gz';
+//   res.set('Content-Encoding', 'gzip');
+//   next();
+// });
 app.use('/hostels/:hostelId/reviews', express.static(path.join(__dirname, '../public')));
 
 app.use(bodyParser.json());
@@ -26,23 +27,23 @@ app.use(
 );
 
 // eslint-disable-next-line func-names
-app.get('/hostels/:hostelId', (req, res) => {
-  const {
-    hostelId,
-  } = req.params;
+// app.get('/hostels/:hostelId', (req, res) => {
+//   const {
+//     hostelId,
+//   } = req.params;
 
-  User.find({
-    _id: hostelId,
-  }, (err, hostel) => {
-    console.log('in the find');
-    if (err) {
-      console.log('inside ERROR');
-    } else {
-      console.log('inside ELSE');
-      res.send(hostel);
-    }
-  });
-});
+//   User.find({
+//     _id: hostelId,
+//   }, (err, hostel) => {
+//     console.log('in the find');
+//     if (err) {
+//       console.log('inside ERROR');
+//     } else {
+//       console.log('inside ELSE');
+//       res.send(hostel);
+//     }
+//   });
+// });
 
 app.get('/api/hostels/:hostelId/reviews', (req, res) => {
   console.log('inside GET users');

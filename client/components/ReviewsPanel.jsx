@@ -95,7 +95,6 @@ class ReviewsPanel extends React.Component {
       <EntireSection>
         <SidePanelHeader>
           <Header2>Reviews & Ratings</Header2>
-          <XDiv>x</XDiv>
         </SidePanelHeader>
 
         <div className="slide-panel-content">
