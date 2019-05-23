@@ -183,8 +183,8 @@ class UserReviewsComponent extends React.Component {
       username, age, gender, country, travelExperience,
     } = review;
     const {
- avgRating, avgRatingWord, reviewDate, reviewText, propertyReply 
-} = review.reviews[0];
+      avgRating, avgRatingWord, reviewDate, reviewText, propertyReply,
+    } = review.reviews[0];
     return (
       <div className="row-container">
         <div className="small-12 columns">
