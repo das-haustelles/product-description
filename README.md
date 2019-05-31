@@ -30,8 +30,16 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 - Node 6.13.0 or higher
 
 ## Development
+- Client
+  - React
+- Server
+  - Express.js
+- Database
+  - MongoDB, modeled with Mongoose
+- Hosting
+  - Containerized on Docker and hosted on AWS EC2 Instance
 
-### Installing Dependencies
+## Installing Dependencies
 
 From within the root directory:
 
