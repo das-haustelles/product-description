@@ -19,16 +19,15 @@
 ## Usage
 
 > Some setup instructions for npm
-- `npm run build` for "webpack -d --watch",
-- `npm run start` for "node ./database-mongodb/usersSeed.js & node ./server/server.js"
+- `npm run build` to compile webpack bundle with --watch flag
+- `npm run start` to seed Users Database on MongoDB and to start server
 - server is run on `http://localhost:3004/hostels/*/reviews/` where `*` is a number between 1-100 for hostel number
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node 6.13.0 or higher
 
 ## Development
 
