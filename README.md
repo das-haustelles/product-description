@@ -9,7 +9,7 @@
   - https://github.com/das-haustelles/stanley-front-end-capstone
   - https://github.com/das-haustelles/julius-front-end-capstone
   - https://github.com/das-haustelles/rich-front-end-capstone
-
+![](demo.gif)
 ## Table of Contents
 
 1. [Usage](#Usage)
