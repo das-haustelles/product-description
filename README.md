@@ -4,12 +4,14 @@
 - Containerized on Docker and hosted on Amazon EC2 Instance
 - This service is one of many parts to a Hostel Booking Application. Here is the app's proxy link - [github](https://github.com/das-haustelles/product-description-proxy)
 
+![](demo.gif)
+
 ## Related Projects
   Below are other microservices that make up the entire application. 
   - https://github.com/das-haustelles/stanley-front-end-capstone
   - https://github.com/das-haustelles/julius-front-end-capstone
   - https://github.com/das-haustelles/rich-front-end-capstone
-![](demo.gif)
+
 ## Table of Contents
 
 1. [Usage](#Usage)
