@@ -27,17 +27,20 @@ const WordReviewCountContainer = styled.div`
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
+  margin-left: 6px;
 `;
 
 const TotalReviewsContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
-const SummaryWordParagraph = styled.text`
+const SummaryWordParagraph = styled.span`
   color: #ff7547;
   font-size: 1rem;
   font-weight: 700;
   margin-top: auto;
+  margin-bottom: 4px;
 `;
 
 const ReviewLink = styled.span`
@@ -70,18 +73,20 @@ const RatingCategory = styled.p`
   font-size: .8rem;
   line-height: 1.2rem;
   width: 350px;
+  margin-bottom: 5px;
 `;
 
 const RatingNumber = styled.strong`
   font-weight: 700;
   font-size: .85rem;
   float: right;
+  margin-right: 50px;
 `;
 
 const ProgressBar = styled.div`
   position: relative;
   height: 0.375rem;
-  width: 350px;
+  width: 300px;
   border-radius: 50px;
   background: #eee;
   margin-top: auto;

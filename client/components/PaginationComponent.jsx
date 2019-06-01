@@ -156,11 +156,7 @@ class PaginationComponent extends React.Component {
     return (
       <div className="row-container">
         <div className="small-12 columns">
-          <div className="intro">
-            <p>
-              current page is
-              {currentPage}
-            </p>
+          <div className="intro" style={{ marginTop: '30px'}}>
             <PaginationCenter>
               <PaginationFirst>First</PaginationFirst>
 

@@ -2,23 +2,19 @@ import React from 'react';
 
 const DropdownFilter = styled.div`
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  float: left;
-  width: 50%;
-  padding-left: .9375rem;
-  padding-right: .9375rem;
-  margin-top: auto;
+  width: 100%;
+  margin-top: 50px;
 `;
 
 const ShowFilter = styled.div`
-  display: flex;
   flex-direction: column;
+  width: 300px;
 `;
 
 const SortByFilter = styled.div`
-  display: flex;
   flex-direction: column;
+  width: 300px;
+  margin-left: 53px;
 `;
 
 const FormLabel = styled.label`
@@ -51,29 +47,25 @@ const DropdownSelect = styled.select`
 function DropdownFilters() {
   return (
     <div className="row-container">
-      <div className="small-12 columns">
-        <div className="intro">
-          <DropdownFilter>
-            <ShowFilter>
-              <FormLabel>SHOW:</FormLabel>
-              <DropdownSelect>
-                <option defaultValue="selected"> English Reviews</option>
-                <option> All Reviews</option>
-              </DropdownSelect>
-            </ShowFilter>
-            <SortByFilter>
-              <FormLabel>SORT BY:</FormLabel>
-              <DropdownSelect>
-                <option> Top Rated</option>
-                <option> Lowest Rated</option>
-                <option defaultValue="selected"> Newest</option>
-                <option> Oldest</option>
-                <option> Age Group</option>
-              </DropdownSelect>
-            </SortByFilter>
-          </DropdownFilter>
-        </div>
-      </div>
+      <DropdownFilter>
+        <ShowFilter>
+          <FormLabel>SHOW:</FormLabel>
+          <DropdownSelect>
+            <option defaultValue="selected"> English Reviews</option>
+            <option> All Reviews</option>
+          </DropdownSelect>
+        </ShowFilter>
+        <SortByFilter>
+          <FormLabel>SORT BY:</FormLabel>
+          <DropdownSelect>
+            <option> Top Rated</option>
+            <option> Lowest Rated</option>
+            <option defaultValue="selected"> Newest</option>
+            <option> Oldest</option>
+            <option> Age Group</option>
+          </DropdownSelect>
+        </SortByFilter>
+      </DropdownFilter>
     </div>
   );
 }
