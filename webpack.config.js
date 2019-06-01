@@ -1,6 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
+// const webpack = require('webpack');
+// builds bundle.js.gz file
+// const CompressionPlugin = require('compression-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 
@@ -27,7 +28,7 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
-  plugins: [new CompressionPlugin(), new webpack.DefinePlugin({
-    'process.env.NODE_ENV': '"production"',
-  })],
+  // plugins: [new CompressionPlugin(), new webpack.DefinePlugin({
+  //   'process.env.NODE_ENV': '"production"',
+  // })],
 };

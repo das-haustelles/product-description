@@ -4,13 +4,15 @@ import { Calendar } from 'styled-icons/boxicons-regular';
 
 const UserReviewsContainer = styled.div`
   display: flex;
-  float: left;
-  justify-content: flex-start;
+  font-family: "Noto",Helvetica,Arial,sans-serif;
+  border-bottom: 1px solid rgb(221, 221, 221);
 `;
 
 const UserProfileSummary = styled.ul`
   display: flex;
   flex-direction: column;
+  padding: 0;
+  margin-top: 25px;
 `;
 
 const BackgroundCircleUserLogo = styled.div`
@@ -42,6 +44,7 @@ const UserDetails = styled.li`
   list-style: none;
   font-size: .7rem;
   color: #666;
+  width: 135px;
 `;
 
 const UserRank = styled.li`
@@ -63,18 +66,22 @@ const IndividualUserReviewsLink = styled.a`
 `;
 
 const ReviewInfo = styled.div`
-  margin-left: 40px;
+  padding-bottom: 35px;
+  padding-top: 25px;
+  margin-left: 65px;
+  margin-right: 50px;
 `;
 
 const UserReviewInfoHeader = styled.div`
-
+  display: flex;
+  align-items: center;
 `;
 
-const UserReviewInfoHeaderRating = styled.div`
-
+const UserReviewRating = styled.div`
+  align-items: center;
 `;
 
-const UserReviewInfoHeaderRatingScore = styled.div`
+const UserReviewScore = styled.div`
   padding: .25rem;
   min-width: 2.2rem;
   font-size: 1rem;
@@ -92,23 +99,18 @@ const UserReviewInfoHeaderRatingScore = styled.div`
   font-family: "Noto",Helvetica,Arial,sans-serif;
 `;
 
-const UserReviewInfoHeaderRatingScoreInfo = styled.div`
-`;
-
-const UserReviewInfoHeaderRatingScoreInfoKeyword = styled.p`
+const UserReviewKeyword = styled.p`
   color: #ff7547;
   font-size: .8rem;
-  line-height: .8rem;
   font-weight: 700;
-  margin: 0;
-  flex-grow: 0;
+  margin-left: 8px;
 `;
 
-const UserReviewInfoHeaderNotes = styled.div`
+const UserReviewText = styled.div`
   padding-top: 1rem;
   margin: 0;
   padding: 0;
-  font-size: 1.1rem;
+  font-size: 14px;
   color: #333;
   font-family: "Noto",Helvetica,Arial,sans-serif;
 `;
@@ -118,7 +120,7 @@ const CalendarIcon = styled(Calendar)`
   height: 14px;
 `;
 
-const UserReviewHeaderDate = styled.div`
+const UserReviewDate = styled.div`
   display: flex;
   justify-content: center;
   color: #888;
@@ -148,10 +150,14 @@ const UserReviewReply = styled.div`
 `;
 
 const UserReviewReplyParagraph = styled.p`
-
+  font-size: 14px;
+  margin-left: 20px;
+  padding-top: 20px;
+  padding-right: 20px;
 `;
 
 const UserReviewSignature = styled.div`
+  margin-left: 360px;
 `;
 
 const UserReviewReplySignatureCommentLogo = styled(Comments)`
@@ -185,74 +191,76 @@ class UserReviewsComponent extends React.Component {
     const {
       avgRating, avgRatingWord, reviewDate, reviewText, propertyReply,
     } = review.reviews[0];
+    const reviewDateFormatted = reviewDate.split('T')[0];
     return (
       <div className="row-container">
-        <div className="small-12 columns">
-          <div className="intro">
-            <UserReviewsContainer>
-              <UserProfileSummary>
-                <BackgroundCircleUserLogo>
-                  <StyledUserLogo />
-                </BackgroundCircleUserLogo>
+        <UserReviewsContainer>
+          <UserProfileSummary>
+            <BackgroundCircleUserLogo>
+              <StyledUserLogo />
+            </BackgroundCircleUserLogo>
+            <Username>
+              {username}
+            </Username>
+            <UserDetails>
+              <span>
+                {country}
+                ,
+                {' '}
+                {gender}
+                ,
+                {' '}
+                {age}
+              </span>
+            </UserDetails>
+            <UserRank>
+              {travelExperience}
+            </UserRank>
+            <IndividualUserReviews>
+              <IndividualUserReviewsLink href="wwww.hostelworld.com" target="_blank">4 reviews</IndividualUserReviewsLink>
+            </IndividualUserReviews>
+          </UserProfileSummary>
 
-                <Username>
-                  {username}
-                </Username>
-                <UserDetails>
-                  {country}
-                  ,
-                  {gender}
-                  ,
-                  {age}
-                </UserDetails>
-                <UserRank>
-                  {travelExperience}
-                </UserRank>
-                <IndividualUserReviews>
-                  <IndividualUserReviewsLink href="wwww.hostelworld.com" target="_blank">4 reviews</IndividualUserReviewsLink>
-                </IndividualUserReviews>
-              </UserProfileSummary>
+          <ReviewInfo>
+            <UserReviewInfoHeader>
+              <UserReviewRating>
+                <UserReviewScore>
+                  {avgRating}
+                </UserReviewScore>
+              </UserReviewRating>
+              <div style={{
+                display: 'flex', width: '100%', justifyContent: 'space-between', alignItems: 'center',
+              }}
+              >
+                <UserReviewKeyword>
+                  {avgRatingWord}
+                </UserReviewKeyword>
+                <UserReviewDate>
+                  <CalendarIcon />
+                  <span>
+                    {reviewDateFormatted}
+                  </span>
+                </UserReviewDate>
+              </div>
+            </UserReviewInfoHeader>
 
-              <ReviewInfo>
-                <UserReviewInfoHeader>
-                  <UserReviewInfoHeaderRating>
-                    <UserReviewInfoHeaderRatingScore>
-                      {avgRating}
-                    </UserReviewInfoHeaderRatingScore>
-                    <UserReviewInfoHeaderRatingScoreInfo>
-                      <UserReviewInfoHeaderRatingScoreInfoKeyword>
-                        {avgRatingWord}
-                      </UserReviewInfoHeaderRatingScoreInfoKeyword>
-                    </UserReviewInfoHeaderRatingScoreInfo>
-                  </UserReviewInfoHeaderRating>
+            <UserReviewText>
+              {reviewText}
+            </UserReviewText>
+            <UserReviewReply>
+              <UserReviewReplyParagraph>
+                {propertyReply}
+              </UserReviewReplyParagraph>
+              <UserReviewSignature>
+                <UserReviewReplySignatureCommentLogo />
+                <UserReviewReplySignatureSpan>
+                  Property Reply
+                </UserReviewReplySignatureSpan>
+              </UserReviewSignature>
+            </UserReviewReply>
+          </ReviewInfo>
 
-                  <UserReviewHeaderDate>
-                    <CalendarIcon />
-                    <span>
-                      {reviewDate}
-                    </span>
-                  </UserReviewHeaderDate>
-                </UserReviewInfoHeader>
-
-                <UserReviewInfoHeaderNotes>
-                  {reviewText}
-                </UserReviewInfoHeaderNotes>
-                <UserReviewReply>
-                  <UserReviewReplyParagraph>
-                    {propertyReply}
-                  </UserReviewReplyParagraph>
-                  <UserReviewSignature>
-                    <UserReviewReplySignatureCommentLogo />
-                    <UserReviewReplySignatureSpan>
-                      Property Reply
-                    </UserReviewReplySignatureSpan>
-                  </UserReviewSignature>
-                </UserReviewReply>
-              </ReviewInfo>
-
-            </UserReviewsContainer>
-          </div>
-        </div>
+        </UserReviewsContainer>
       </div>
     );
   }

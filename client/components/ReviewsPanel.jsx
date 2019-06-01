@@ -10,12 +10,7 @@ import PaginationComponent from './PaginationComponent';
 const EntireSection = styled.section`
   width: 50%;
   background-color: #fff;
-`;
-
-const SidePanelHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  font-family: "Noto",Helvetica,Arial,sans-serif;
 `;
 
 const XDiv = styled.div`
@@ -31,26 +26,17 @@ const XDiv = styled.div`
 `;
 
 const Header2 = styled.h2`
-
   color: #444;
   margin-top: 0;
-  margin-bottom: .5rem;
-  -webkit-font-smoothing: antialiased;
   font-weight: 300;
   font-family: "Noto"
-
-
   font-size: 1.5rem;
   line-height: 1.4;
   color: #444;
   margin-top: 0;
   margin-bottom: .5rem;
-  -webkit-font-smoothing: antialiased;
   font-weight: 300;
   font-style: normal;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 `;
 
 const SidePanelContentSection = styled.section`
@@ -91,27 +77,18 @@ class ReviewsPanel extends React.Component {
 
   render() {
     const { currentPage, userReviews } = this.state;
+    let tenReviews = userReviews.slice(0, 10);
     return (
       <EntireSection>
-        <SidePanelHeader>
-          <Header2>Reviews & Ratings</Header2>
-          <XDiv>x</XDiv>
-        </SidePanelHeader>
-
+        <Header2>Reviews & Ratings</Header2>
         <div className="slide-panel-content">
           <div className="slide-panel-content-wrapper" />
           <SidePanelContentSection>
             <div className="reviews-overlay-content">
               <ReviewGuidelines />
               <RatingSummaryBreakdown />
-              <br />
-              <br />
               <DropdownFilters />
-              <br />
-              <br />
-              <br />
-              <br />
-              {userReviews.map((review, idx) => <UserReview key={idx} review={review} />)}
+              {tenReviews.map((review, idx) => <UserReview key={idx} review={review} />)}
               <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} />
             </div>
           </SidePanelContentSection>
