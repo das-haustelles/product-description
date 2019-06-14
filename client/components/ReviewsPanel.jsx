@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+import ReactPaginate from 'react-paginate';
 import ReviewGuidelines from './ReviewGuidelines';
 import RatingSummaryBreakdown from './RatingSummaryBreakdown';
 import DropdownFilters from './DropdownFilters';
@@ -51,6 +52,8 @@ class ReviewsPanel extends React.Component {
     this.state = {
       currentPage: 1,
       userReviews: [],
+      pageCount: 0,
+      offset: 0,
     };
     this.handleCurrentPageChange = this.handleCurrentPageChange.bind(this);
   }
@@ -59,8 +62,10 @@ class ReviewsPanel extends React.Component {
     const hostelId = window.location.pathname.split('/')[1];
     axios.get(`/api/hostels/${hostelId}/reviews`)
       .then((response) => {
+        const reviewsCount = (response.data.length / 10);
         this.setState({
           userReviews: response.data,
+          pageCount: reviewsCount,
         });
       })
       .catch((error) => {
@@ -75,9 +80,17 @@ class ReviewsPanel extends React.Component {
     });
   }
 
+  handlePageClick = (data) => {
+    this.setState({
+      offset: data.selected,
+    });
+  }
+
   render() {
-    const { currentPage, userReviews } = this.state;
-    let tenReviews = userReviews.slice(0, 10);
+    const {
+      currentPage, userReviews, pageCount, offset,
+    } = this.state;
+    const rangeReviewsDisplayed = userReviews.slice(offset, offset + 5);
     return (
       <EntireSection>
         <Header2>Reviews & Ratings</Header2>
@@ -88,11 +101,24 @@ class ReviewsPanel extends React.Component {
               <ReviewGuidelines />
               <RatingSummaryBreakdown />
               <DropdownFilters />
-              {tenReviews.map((review, idx) => <UserReview key={idx} review={review} />)}
+              {rangeReviewsDisplayed.map((review, idx) => <UserReview key={idx} review={review} />)}
               <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} />
             </div>
           </SidePanelContentSection>
         </div>
+        <ReactPaginate
+          previousLabel="previous"
+          nextLabel="next"
+          breakLabel="..."
+          breakClassName="break-me"
+          pageCount={pageCount}
+          marginPagesDisplayed={0}
+          pageRangeDisplayed={5}
+          onPageChange={this.handlePageClick}
+          containerClassName="pagination"
+          subContainerClassName="pages pagination"
+          activeClassName="active"
+        />
       </EntireSection>
 
     );
