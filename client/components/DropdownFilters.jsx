@@ -44,30 +44,44 @@ const DropdownSelect = styled.select`
   }
 `;
 
-function DropdownFilters() {
-  return (
-    <div className="row-container">
-      <DropdownFilter>
-        <ShowFilter>
-          <FormLabel>SHOW:</FormLabel>
-          <DropdownSelect>
-            <option defaultValue="selected"> English Reviews</option>
-            <option> All Reviews</option>
-          </DropdownSelect>
-        </ShowFilter>
-        <SortByFilter>
-          <FormLabel>SORT BY:</FormLabel>
-          <DropdownSelect>
-            <option> Top Rated</option>
-            <option> Lowest Rated</option>
-            <option defaultValue="selected"> Newest</option>
-            <option> Oldest</option>
-            <option> Age Group</option>
-          </DropdownSelect>
-        </SortByFilter>
-      </DropdownFilter>
-    </div>
-  );
+class DropdownFilters extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+    };
+  }
+
+  changeSelectedDropdown = (e) => {
+    const { filterReviews } = this.props;
+    filterReviews(e.target.value);
+  };
+
+  render() {
+    return (
+      <div className="row-container">
+        <DropdownFilter>
+          <ShowFilter>
+            <FormLabel>SHOW:</FormLabel>
+            <DropdownSelect onChange={e => this.changeSelectedDropdown(e)}>
+              <option defaultValue="selected"> English Reviews</option>
+              <option> All Reviews</option>
+            </DropdownSelect>
+          </ShowFilter>
+          <SortByFilter>
+            <FormLabel>SORT BY:</FormLabel>
+            <DropdownSelect onChange={this.changeSelectedDropdown}>
+              {/* <option> Top Rated</option>
+              <option> Lowest Rated</option> */}
+              <option defaultValue="selected"> Newest</option>
+              <option value="Oldest"> Oldest</option>
+              {/* <option> Age Group</option> */}
+            </DropdownSelect>
+          </SortByFilter>
+        </DropdownFilter>
+      </div>
+    );
+  }
 }
 
 export default DropdownFilters;

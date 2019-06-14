@@ -63,8 +63,10 @@ class ReviewsPanel extends React.Component {
     axios.get(`/api/hostels/${hostelId}/reviews`)
       .then((response) => {
         const reviewsCount = (response.data.length / 10);
+        console.table(response.data);
+        const userReviewsSortedByNewest = response.data.sort(this.sortByNewest);
         this.setState({
-          userReviews: response.data,
+          userReviews: userReviewsSortedByNewest,
           pageCount: reviewsCount,
         });
       })
@@ -86,6 +88,37 @@ class ReviewsPanel extends React.Component {
     });
   }
 
+  sortByOldest = (a, b) => {
+    if (a.createdAt < b.createdAt) {
+      return -1;
+    } if (a.createdAt > b.createdAt) {
+      return 1;
+    }
+    return 0;
+  }
+
+  sortByNewest = (a, b) => {
+    if (a.createdAt < b.createdAt) {
+      return 1;
+    } if (a.createdAt > b.createdAt) {
+      return -1;
+    }
+    return 0;
+  }
+
+  filterReviews = (dropdownSelected) => {
+    let sortedReviews;
+    const { userReviews } = this.state;
+    if (dropdownSelected === 'Oldest') {
+      sortedReviews = userReviews.sort(this.sortByOldest);
+    } else if (dropdownSelected === 'Newest') {
+      sortedReviews = userReviews.sort(this.sortByNewest);
+    }
+    this.setState({
+      userReviews: sortedReviews,
+    });
+  }
+
   render() {
     const {
       currentPage, userReviews, pageCount, offset,
@@ -100,9 +133,8 @@ class ReviewsPanel extends React.Component {
             <div className="reviews-overlay-content">
               <ReviewGuidelines />
               <RatingSummaryBreakdown />
-              <DropdownFilters />
+              <DropdownFilters filterReviews={this.filterReviews} />
               {rangeReviewsDisplayed.map((review, idx) => <UserReview key={idx} review={review} />)}
-              {/* <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} /> */}
             </div>
           </SidePanelContentSection>
         </div>
