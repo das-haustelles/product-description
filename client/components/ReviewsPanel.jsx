@@ -102,7 +102,7 @@ class ReviewsPanel extends React.Component {
               <RatingSummaryBreakdown />
               <DropdownFilters />
               {rangeReviewsDisplayed.map((review, idx) => <UserReview key={idx} review={review} />)}
-              <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} />
+              {/* <PaginationComponent currentPage={currentPage} handleClickReviewsPanel={this.handleCurrentPageChange} /> */}
             </div>
           </SidePanelContentSection>
         </div>
