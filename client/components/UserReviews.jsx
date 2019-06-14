@@ -30,6 +30,7 @@ const StyledUserLogo = styled(User)`
   height: 30px;
   display: flex;
   color: #888;
+  margin-bottom: 6px;
 `;
 
 const Username = styled.li`
