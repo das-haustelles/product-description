@@ -142,8 +142,6 @@
 
 //   handleClick(e) {
 //     const pageClicked = parseInt(e.currentTarget.textContent, 10);
-//     console.log('page clicked:', pageClicked);
-//     console.log('state is:', this.state);
 //     this.setState({
 //       currentPage: pageClicked,
 //       pagesArray: pageClicked <= 3 ? [1, 2, 3, 4, 5] : [pageClicked - 2, pageClicked - 1, pageClicked, pageClicked + 1, pageClicked + 2],
