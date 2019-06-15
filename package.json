@@ -6,10 +6,10 @@
   "scripts": {
     "test": "jest",
     "build": "webpack -d --watch",
-    "startcopy": "nodemon ./server/server.js",
-    "start": "node ./database-mongodb/usersSeed.js & node ./server/server.js",
+    "start": "nodemon ./server/server.js",
     "db:hostelSeed": "node database-mongodb/hostelsSeed.js",
-    "db:usersSeed": "node database-mongodb/usersSeed.js"
+    "db:usersSeed": "node database-mongodb/usersSeed.js",
+    "postinstall": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -56,5 +56,9 @@
     "webpack": "^4.29.6",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.0"
+  },
+  "engines": {
+    "node": "8.4.0",
+    "npm": "6.1.0"
   }
 }
