@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGODB_URI || mongoUri, {
   useNewUrlParser: true,
 });
 
-console.log(process.env.MONGODB_URI);
+console.log('connected to mongodb at:', process.env.MONGODB_URI);
 const db = mongoose.connection;
 
 module.exports = db;
