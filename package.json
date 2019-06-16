@@ -9,7 +9,7 @@
     "start": "node ./server/server.js",
     "db:hostelSeed": "node database-mongodb/hostelsSeed.js",
     "db:usersSeed": "node database-mongodb/usersSeed.js",
-    "heroku-postbuild": "node ./server/server.js"
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "keywords": [],
   "author": "",
