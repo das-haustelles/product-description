@@ -5,11 +5,10 @@
   "main": "bundle.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack -d --watch",
-    "start": "nodemon ./server/server.js",
+    "build": "webpack -p",
+    "start": "node ./server/server.js",
     "db:hostelSeed": "node database-mongodb/hostelsSeed.js",
-    "db:usersSeed": "node database-mongodb/usersSeed.js",
-    "postinstall": "npm run start"
+    "db:usersSeed": "node database-mongodb/usersSeed.js"
   },
   "keywords": [],
   "author": "",
