@@ -9,7 +9,7 @@
     "start": "node ./server/server.js",
     "db:hostelSeed": "node database-mongodb/hostelsSeed.js",
     "db:usersSeed": "node database-mongodb/usersSeed.js",
-    "heroku-postbuild": "npm run webpack -d && npm run start"
+    "heroku-postbuild": "npm run webpack -d"
   },
   "keywords": [],
   "author": "",
