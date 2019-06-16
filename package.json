@@ -5,10 +5,11 @@
   "main": "bundle.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack -p",
+    "build": "webpack -d --watch",
     "start": "node ./server/server.js",
     "db:hostelSeed": "node database-mongodb/hostelsSeed.js",
-    "db:usersSeed": "node database-mongodb/usersSeed.js"
+    "db:usersSeed": "node database-mongodb/usersSeed.js",
+    "heroku-postbuild": "webpack -p"
   },
   "keywords": [],
   "author": "",
