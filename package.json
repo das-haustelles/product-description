@@ -8,7 +8,8 @@
     "build": "webpack -d --watch",
     "start": "node ./server/server.js",
     "db:hostelSeed": "node database-mongodb/hostelsSeed.js",
-    "db:usersSeed": "node database-mongodb/usersSeed.js"
+    "db:usersSeed": "node database-mongodb/usersSeed.js",
+    "heroku-postbuild": "node ./server/server.js"
   },
   "keywords": [],
   "author": "",
