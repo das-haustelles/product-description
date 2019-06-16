@@ -66,10 +66,6 @@ class ReviewsPanel extends React.Component {
         const reviewsCount = (response.data.length / 10);
         const reviews = response.data.map(user => user.reviews[0]);
         const users = response.data;
-        console.table('users', users);
-        console.table('reviews', reviews);
-        // console.table('first user\'s reviews', response.data[0].reviews);
-        // const reviewsSortedByNewest = response.data.sort(this.sortByNewest);
         const reviewsSortedByNewest = reviews.sort(this.sortByNewest);
         const userReviewSortedByNewest = users.sort(this.userSortByNewest);
         this.setState({
