@@ -52,6 +52,7 @@ class ReviewsPanel extends React.Component {
     this.state = {
       currentPage: 1,
       users: [],
+      reviews: [],
       pageCount: 0,
       offset: 0,
     };
@@ -64,11 +65,16 @@ class ReviewsPanel extends React.Component {
       .then((response) => {
         const reviewsCount = (response.data.length / 10);
         const reviews = response.data.map(user => user.reviews[0]);
+        const users = response.data;
+        console.table('users', users);
         console.table('reviews', reviews);
         // console.table('first user\'s reviews', response.data[0].reviews);
-        const usersSortedByNewest = response.data.sort(this.sortByNewest);
+        // const reviewsSortedByNewest = response.data.sort(this.sortByNewest);
+        const reviewsSortedByNewest = reviews.sort(this.sortByNewest);
+        const userReviewSortedByNewest = users.sort(this.userSortByNewest);
         this.setState({
-          users: usersSortedByNewest,
+          reviews: reviewsSortedByNewest,
+          users: userReviewSortedByNewest,
           pageCount: reviewsCount,
         });
       })
@@ -85,24 +91,43 @@ class ReviewsPanel extends React.Component {
   }
 
   handlePageClick = (data) => {
+    console.log('page clicked?', data.selected);
     this.setState({
-      offset: data.selected,
+      offset: data.selected * 10,
     });
   }
 
   sortByOldest = (a, b) => {
-    if (a.createdAt < b.createdAt) {
+    if (a.reviewDate < b.reviewDate) {
       return -1;
-    } if (a.createdAt > b.createdAt) {
+    } if (a.reviewDate > b.reviewDate) {
       return 1;
     }
     return 0;
   }
 
   sortByNewest = (a, b) => {
-    if (a.createdAt < b.createdAt) {
+    if (a.reviewDate < b.reviewDate) {
       return 1;
-    } if (a.createdAt > b.createdAt) {
+    } if (a.reviewDate > b.reviewDate) {
+      return -1;
+    }
+    return 0;
+  }
+
+  userSortByOldest = (a, b) => {
+    if (a.reviews[0].reviewDate < b.reviews[0].reviewDate) {
+      return -1;
+    } if (a.reviews[0].reviewDate > b.reviews[0].reviewDate) {
+      return 1;
+    }
+    return 0;
+  }
+
+  userSortByNewest = (a, b) => {
+    if (a.reviews[0].reviewDate < b.reviews[0].reviewDate) {
+      return 1;
+    } if (a.reviews[0].reviewDate > b.reviews[0].reviewDate) {
       return -1;
     }
     return 0;
@@ -110,24 +135,27 @@ class ReviewsPanel extends React.Component {
 
   filterReviews = (dropdownSelected) => {
     let sortedReviews;
-    const { users } = this.state;
+    let userReviewSortedByNewest;
+    const { reviews, users } = this.state;
     if (dropdownSelected === 'Oldest') {
-      sortedReviews = users.sort(this.sortByOldest);
+      sortedReviews = reviews.sort(this.sortByOldest);
+      userReviewSortedByNewest = users.sort(this.userSortByOldest);
     } else if (dropdownSelected === 'Newest') {
-      sortedReviews = users.sort(this.sortByNewest);
+      sortedReviews = reviews.sort(this.sortByNewest);
+      userReviewSortedByNewest = users.sort(this.userSortByNewest);
     }
     this.setState({
-      users: sortedReviews,
+      reviews: sortedReviews,
+      users: userReviewSortedByNewest,
     });
   }
 
   render() {
     const {
-      currentPage, users, pageCount, offset,
+      currentPage, reviews, users, pageCount, offset,
     } = this.state;
-    console.table('all users', users);
-    const rangeOfUsers = users.slice(offset, offset + 5);
-    console.table('range of users displayed', rangeOfUsers);
+    const rangeOfreviews = reviews.slice(offset, offset + 10);
+    const rangeOfUsers = users.slice(offset, offset + 10);
     return (
       <EntireSection>
         <Header2>Reviews & Ratings</Header2>
@@ -138,7 +166,9 @@ class ReviewsPanel extends React.Component {
               <ReviewGuidelines />
               <RatingSummaryBreakdown />
               <DropdownFilters filterReviews={this.filterReviews} />
-              {rangeOfUsers.map((user, idx) => <UserReview key={idx} review={user} />)}
+              {rangeOfreviews.map((review, idx) => (
+                <UserReview key={idx} review={review} user={rangeOfUsers[idx]} />
+              ))}
             </div>
           </SidePanelContentSection>
         </div>
@@ -156,7 +186,6 @@ class ReviewsPanel extends React.Component {
           activeClassName="active"
         />
       </EntireSection>
-
     );
   }
 }

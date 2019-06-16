@@ -185,13 +185,13 @@ class UserReviewsComponent extends React.Component {
   }
 
   render() {
-    const { review } = this.props;
+    const { review, user } = this.props;
     const {
       username, age, gender, country, travelExperience,
-    } = review;
+    } = user;
     const {
       avgRating, avgRatingWord, reviewDate, reviewText, propertyReply,
-    } = review.reviews[0];
+    } = review;
     const reviewDateFormatted = reviewDate.split('T')[0];
     return (
       <div className="row-container">
