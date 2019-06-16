@@ -51,7 +51,7 @@ class ReviewsPanel extends React.Component {
     super(props);
     this.state = {
       currentPage: 1,
-      userReviews: [],
+      users: [],
       pageCount: 0,
       offset: 0,
     };
@@ -63,10 +63,12 @@ class ReviewsPanel extends React.Component {
     axios.get(`/api/hostels/${hostelId}/reviews`)
       .then((response) => {
         const reviewsCount = (response.data.length / 10);
-        console.table(response.data);
-        const userReviewsSortedByNewest = response.data.sort(this.sortByNewest);
+        const reviews = response.data.map(user => user.reviews[0]);
+        console.table('reviews', reviews);
+        // console.table('first user\'s reviews', response.data[0].reviews);
+        const usersSortedByNewest = response.data.sort(this.sortByNewest);
         this.setState({
-          userReviews: userReviewsSortedByNewest,
+          users: usersSortedByNewest,
           pageCount: reviewsCount,
         });
       })
@@ -108,22 +110,24 @@ class ReviewsPanel extends React.Component {
 
   filterReviews = (dropdownSelected) => {
     let sortedReviews;
-    const { userReviews } = this.state;
+    const { users } = this.state;
     if (dropdownSelected === 'Oldest') {
-      sortedReviews = userReviews.sort(this.sortByOldest);
+      sortedReviews = users.sort(this.sortByOldest);
     } else if (dropdownSelected === 'Newest') {
-      sortedReviews = userReviews.sort(this.sortByNewest);
+      sortedReviews = users.sort(this.sortByNewest);
     }
     this.setState({
-      userReviews: sortedReviews,
+      users: sortedReviews,
     });
   }
 
   render() {
     const {
-      currentPage, userReviews, pageCount, offset,
+      currentPage, users, pageCount, offset,
     } = this.state;
-    const rangeReviewsDisplayed = userReviews.slice(offset, offset + 5);
+    console.table('all users', users);
+    const rangeOfUsers = users.slice(offset, offset + 5);
+    console.table('range of users displayed', rangeOfUsers);
     return (
       <EntireSection>
         <Header2>Reviews & Ratings</Header2>
@@ -134,7 +138,7 @@ class ReviewsPanel extends React.Component {
               <ReviewGuidelines />
               <RatingSummaryBreakdown />
               <DropdownFilters filterReviews={this.filterReviews} />
-              {rangeReviewsDisplayed.map((review, idx) => <UserReview key={idx} review={review} />)}
+              {rangeOfUsers.map((user, idx) => <UserReview key={idx} review={user} />)}
             </div>
           </SidePanelContentSection>
         </div>
