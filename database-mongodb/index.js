@@ -5,7 +5,7 @@ const mongoUri = 'mongodb://localhost/dashaustelles';
 // const mongoUri = 'mongodb://172.17.0.2:27017/dashaustelles';
 
 
-mongoose.connect(mongoUri, {
+mongoose.connect(process.env.MONGODB_URI || mongoUri, {
   useNewUrlParser: true,
 });
 
