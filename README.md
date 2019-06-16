@@ -5,7 +5,7 @@
 - This service is one of many parts to a Hostel Booking Application. Here is the app's proxy link - [github](https://github.com/das-haustelles/product-description-proxy)
 
 ## Demo
-![](demo.gif)
+![](fec-demo.gif)
 
 ## Related Projects
   Below are other microservices that make up the entire application. 
