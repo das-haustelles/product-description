@@ -1,15 +1,17 @@
-# Project Name
+# DasHaustelles Reviews Module
 
-> Project description
-- Property Description with "House Rules" link (side panel)
-- Reviews side panel with "Read All Reviews" link (side panel)
+- Reviews microservice for a listing page of a Hostel Booking Application
+- Containerized on Docker and hosted on Amazon EC2 Instance
+- This service is one of many parts to a Hostel Booking Application. Here is the app's proxy link - [github](https://github.com/das-haustelles/product-description-proxy)
+
+## Demo
+![](fec-demo.gif)
 
 ## Related Projects
-
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  Below are other microservices that make up the entire application. 
+  - https://github.com/das-haustelles/stanley-front-end-capstone
+  - https://github.com/das-haustelles/julius-front-end-capstone
+  - https://github.com/das-haustelles/rich-front-end-capstone
 
 ## Table of Contents
 
@@ -19,21 +21,29 @@
 
 ## Usage
 
-> Some usage instructions
--  run "build" for "webpack -d --watch",
--  run "start" for "nodemon ./server/server.js"
--  to seed database, run "node database-mongodb/hostelsSeed.js"
+> Some setup instructions for npm
+- `npm run build` to compile webpack bundle with --watch flag
+- `npm run db:usersSeed` to seed Users Database
+- `npm run start` to start server
+- server is run on `http://localhost:3004/hostels/*/reviews/` where `*` is a number between 1-100 for hostel number
 
 ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 
-- Node 6.13.0
-- etc
+- Node 6.13.0 or higher
 
 ## Development
+- Client
+  - React
+- Server
+  - Express.js
+- Database
+  - MongoDB, modeled with Mongoose
+- Hosting
+  - Containerized on Docker and hosted on AWS EC2 Instance
 
-### Installing Dependencies
+## Installing Dependencies
 
 From within the root directory:
 
