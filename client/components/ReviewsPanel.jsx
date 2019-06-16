@@ -87,7 +87,6 @@ class ReviewsPanel extends React.Component {
   }
 
   handlePageClick = (data) => {
-    console.log('page clicked?', data.selected);
     this.setState({
       offset: data.selected * 10,
     });
