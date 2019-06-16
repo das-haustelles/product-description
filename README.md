@@ -23,7 +23,8 @@
 
 > Some setup instructions for npm
 - `npm run build` to compile webpack bundle with --watch flag
-- `npm run start` to seed Users Database on MongoDB and to start server
+- `npm run db:usersSeed` to seed Users Database
+- `npm run start` to start server
 - server is run on `http://localhost:3004/hostels/*/reviews/` where `*` is a number between 1-100 for hostel number
 
 ## Requirements
