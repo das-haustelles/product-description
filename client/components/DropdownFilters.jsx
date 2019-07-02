@@ -57,15 +57,16 @@ class DropdownFilters extends React.Component {
     filterReviews(e.target.value);
   };
 
+
   render() {
     return (
       <div className="row-container">
         <DropdownFilter>
           <ShowFilter>
             <FormLabel>SHOW:</FormLabel>
-            <DropdownSelect onChange={e => this.changeSelectedDropdown(e)}>
-              <option defaultValue="selected"> English Reviews</option>
-              <option> All Reviews</option>
+            <DropdownSelect>
+              <option value="English"> English Reviews</option>
+              <option value="allReviews"> All Reviews</option>
             </DropdownSelect>
           </ShowFilter>
           <SortByFilter>
