@@ -57,9 +57,6 @@ class DropdownFilters extends React.Component {
     filterReviews(e.target.value);
   };
 
-  dummyFunction = (e) => {
-    console.log(e);
-  }
 
   render() {
     return (
