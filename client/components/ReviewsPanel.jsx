@@ -6,7 +6,6 @@ import ReviewGuidelines from './ReviewGuidelines';
 import RatingSummaryBreakdown from './RatingSummaryBreakdown';
 import DropdownFilters from './DropdownFilters';
 import UserReview from './UserReviews';
-import PaginationComponent from './PaginationComponent';
 
 const EntireSection = styled.section`
   width: 50%;
